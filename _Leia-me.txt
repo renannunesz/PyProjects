@@ -1,0 +1,9 @@
+Passo a passo para instalação do RemoveSing
+
+1 - Executar o arquivo "python-3.13.2-amd64.exe";
+
+2 - Entrar na pasta da aplicação e criar uma atalho para o arquivo "(aplicação).py";
+
+3 - Ir nas propriedades do atalho criado e adicionar a variável "pythonw" na opção "Destino".
+
+4 - Testar o uso da aplicação.
