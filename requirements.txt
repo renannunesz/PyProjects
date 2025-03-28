@@ -9,3 +9,4 @@ comtypes
 re
 python-docx
 plyer
+Pillow
