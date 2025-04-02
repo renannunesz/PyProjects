@@ -18,7 +18,7 @@ data_hoje = hoje.strftime("%d%m%Y")
 # Retorna o diretório onde o script está localizado
 caminho_base = os.path.dirname(os.path.abspath(__file__))
 
-class genAnuencias:
+class genOrdenServico:
     def __init__(self, root):
         # Crie a interface gráfica
         style = Style(theme='darkly')
@@ -226,7 +226,7 @@ class genAnuencias:
         self.lbl_pastaselecionada.grid(row=11, column=2, sticky=tk.W, padx=(0,10))
 
         # Botão
-        self.btn_gerar = ttk.Button(frame, text="Gerar Ordens de Serviço", command=self.verificar_checkbuttons).grid(row=12, column=0, sticky=tk.W, padx=(0, 10), pady=10)      #verificar_checkbuttons
+        self.btn_gerar = ttk.Button(frame, text="Gerar Ordens de Serviço", command=self.verificar_checkbuttons).grid(row=12, column=0, sticky=tk.W, padx=(0, 10), pady=10)
 
         # Defina os dados
         self.dados = {}   
@@ -600,5 +600,5 @@ class genAnuencias:
 # Criar janela do Tkinter
 if __name__ == "__main__":
     root = tk.Tk()
-    app = genAnuencias(root)
+    app = genOrdenServico(root)
     root.mainloop()
