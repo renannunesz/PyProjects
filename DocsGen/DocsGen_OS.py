@@ -2,6 +2,7 @@ import os
 import tkinter as tk
 import comtypes.client
 import re
+import locale
 from plyer import notification
 from tkinter import ttk, filedialog, messagebox
 from docx import Document
@@ -10,11 +11,12 @@ from ttkbootstrap import Style
 from PIL import Image, ImageTk
 from datetime import datetime
 
+# Seta a linguagem para Portugues do brasil.
+locale.setlocale(locale.LC_TIME, "Portuguese_Brazil.1252")
 # Obter a data de hoje
 hoje = datetime.today()
 # Formatar a data como DDMMAAAA
 data_hoje = hoje.strftime("%d%m%Y")
-
 # Retorna o diretório onde o script está localizado
 caminho_base = os.path.dirname(os.path.abspath(__file__))
 
@@ -56,7 +58,7 @@ class genOrdenServico:
         self.entr_apelido.grid(row=1, column=5, sticky=tk.W, pady=10)
 
         ttk.Label(lblframe_dados_documentos, text="GHE: ").grid(row=2, column=0, sticky=tk.W)
-        self.cbbx_ghe = ttk.Combobox(lblframe_dados_documentos, values=["01", "02", "03", "04", "TECNICO DE PA"], width=40)
+        self.cbbx_ghe = ttk.Combobox(lblframe_dados_documentos, values=["01", "02", "03", "04"], width=40)
         self.cbbx_ghe.grid(row=2, column=1, sticky=tk.W, pady=10)
         self.cbbx_ghe.bind("<<ComboboxSelected>>", self.update_funcao)
 
@@ -342,7 +344,12 @@ class genOrdenServico:
                     "TECNICO O&M JR",
                     "TECNICO O&M LIDER",
                     "TECNICO O&M PL",
-                    "TECNICO O&M SR"
+                    "TECNICO O&M SR",
+                    "TECNICO DE PA EOLICA ESPECIALISTA",
+                    "TECNICO DE PA EOLICA JR",
+                    "TECNICO DE PA EOLICA LIDER",
+                    "TECNICO DE PA EOLICA PL",
+                    "TECNICO DE PA EOLICA SR",                    
                 ]
         elif gheSelecionado == "04":
                 self.cbbx_funcao['values'] = [
@@ -370,18 +377,23 @@ class genOrdenServico:
                     "VICE PRESIDENTE DE OPERACOES",
                     "VICE PRESIDENTE REGIONAL CTO",
                     "VICE PRESIDENTE, PEOPLE & CULTURE, LATAM"
-                ]
-        elif gheSelecionado == "TECNICO DE PA":
-                self.cbbx_funcao['values'] = [
-                    "TECNICO DE PA EOLICA ESPECIALISTA",
-                    "TECNICO DE PA EOLICA JR",
-                    "TECNICO DE PA EOLICA LIDER",
-                    "TECNICO DE PA EOLICA PL",
-                    "TECNICO DE PA EOLICA SR",
-                ]                
+                ]           
     
-    #NOME DO ARQUIVO = NR10_(INICIAIS)_DATA_TEC_OM
-
+    def atividade_funcao(self):
+        # Abrir o arquivo para leitura
+        arquivo = os.path.join(caminho_base,'listaDescFuncoes.txt')
+        with open(arquivo, 'r', encoding='utf-8') as file:
+            # Ler o arquivo linha por linha
+            for line in file:
+                # Remover espaços em branco no início e fim da linha
+                line = line.strip()
+                # Dividir a linha em partes usando o ponto e vírgula como separador
+                parts = line.split(';')
+                # Exibir as partes da linha
+                #print(parts[1])
+                if parts[1] == self.cbbx_funcao.get():
+                    return parts[2]
+    
     def gerarOS(self, substituicoes):        
 
         # Recebe riscos fisicos
@@ -505,13 +517,14 @@ class genOrdenServico:
         riscosMecanicos = ""
         for varMeca, ckbMeca in zip(variaveisMecanicos, checkboxMecanicos):
             if varMeca.get():
-                riscosMecanicos += ckbMeca.cget("text") + "\n"
-
+                riscosMecanicos += ckbMeca.cget("text") + "\n"      
+        
         # Receber os dados
         substituicoes =  {
             'NOMEFUNCIONARIO': self.entr_funcionario.get(),
             'CPFFUNCIONARIO': self.entr_CPF.get(),
             'FUNCFUNCIONARIO': self.cbbx_funcao.get(),
+            'ATVFUNCIONARIO': self.atividade_funcao(),
             'DIAOS': datetime.today().strftime("%d"),
             'MESOS': datetime.today().strftime("%B"),
             'ANOOS': datetime.today().strftime("%Y")            
@@ -526,8 +539,8 @@ class genOrdenServico:
             documentoModelo = 'osst_ghe02.docx'
         elif tipoGHE == "03":
             documentoModelo = 'osst_ghe03.docx'
-        elif tipoGHE == "TECNICO DE PA":
-            documentoModelo = 'osst_tec_pa.docx'
+        elif tipoGHE == "04":
+            documentoModelo = 'osst_ghe04.docx'
         else:
             print("Outros")
 
@@ -571,7 +584,7 @@ class genOrdenServico:
     def verificar_checkbuttons(self):
         cpf_digitado = self.entr_CPF.get()
         texto_pastaselecionada = self.lbl_pastaselecionada.cget("text")
-        if texto_pastaselecionada == "Selecione a pasta":
+        if texto_pastaselecionada == "(Selecione a pasta)":
             messagebox.showinfo("Alerta!", "Selecione a pasta para salvar o(s) documento(s)!") 
         else:
             if self.validar_cpf(cpf_digitado):
