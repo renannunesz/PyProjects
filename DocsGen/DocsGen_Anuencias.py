@@ -31,37 +31,36 @@ class genAnuencias:
         self.dir_pasta_selecionada = ""
 
         # Carregar a imagem
-        self.bg_image = Image.open(r"C:\PyProjects\DocsGen\background.png")
+        self.bg_image = Image.open(r"C:\PyProjects\DocsGen\bkg_anuencias.png")
         self.bg_photo = ImageTk.PhotoImage(self.bg_image)
         
         # Inserir a imagem no topo do formulário
         ttk.Label(frame, image=self.bg_photo).grid(row=0, column=0, columnspan=6, pady=(0, 20))
 
-        # Labels
-        ttk.Label(frame, text="Funcionário:").grid(row=1, column=0, sticky=tk.W)
-        ttk.Label(frame, text="CPF: ").grid(row=2, column=0, sticky=tk.W)
-        ttk.Label(frame, text="Iniciais: ").grid(row=3, column=0, sticky=tk.W)
-        #ttk.Label(frame, text="Dia: ").grid(row=2, column=0, sticky=tk.W)
-        #ttk.Label(frame, text="Mês: ").grid(row=3, column=0, sticky=tk.W)
-        #ttk.Label(frame, text="Ano: ").grid(row=4, column=0, sticky=tk.W)
-        ttk.Label(frame, text="Técnico O&M: ").grid(row=5, column=0, sticky=tk.W)
-        ttk.Label(frame, text="Supervisor O&M: ").grid(row=6, column=0, sticky=tk.W)
-        ttk.Label(frame, text="Técnico PA: ").grid(row=7, column=0, sticky=tk.W)
-        ttk.Label(frame, text="Salvar Arquivos em: ").grid(row=8, column=0, sticky=tk.W)
+        #LabelFrame dentro do Frame - Dados Documento
+        lblframe_dados_documentos = ttk.LabelFrame(frame, text="Dados Documento:", padding=10)
+        lblframe_dados_documentos.grid(row=1, column=0, columnspan=6, sticky="ew", padx=10, pady=10)   
 
-        # Combobox
-        #self.cbbx_funcionario = ttk.Combobox(frame, values=["RENAN NUNES"] ,width=50).grid(row=1, column=1, columnspan=5, sticky=tk.W, pady=10)
-        #self.cbbx_mes = ttk.Combobox(frame, values=["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]).grid(row=3, column=1, columnspan=2, sticky=tk.W, pady=10)
+        # Labels
+        ttk.Label(lblframe_dados_documentos, text="Funcionário: ").grid(row=0, column=0, sticky=tk.W)
+        ttk.Label(lblframe_dados_documentos, text="CPF: ").grid(row=1, column=0, sticky=tk.W)
+        ttk.Label(lblframe_dados_documentos, text=" Iniciais: ").grid(row=1, column=2, sticky=tk.W)
 
         # Entry (input)
-        self.entr_funcionario = ttk.Entry(frame, width=50)
-        self.entr_funcionario.grid(row=1, column=1, columnspan=5, sticky=tk.W, pady=10)
-        self.entr_CPF = ttk.Entry(frame, width=50)
-        self.entr_CPF.grid(row=2, column=1, columnspan=5, sticky=tk.W, pady=10)
-        self.entr_apelido = ttk.Entry(frame, width=50)
-        self.entr_apelido.grid(row=3, column=1, columnspan=5, sticky=tk.W, pady=10)
-        #self.entr_dia = ttk.Entry(frame, width=5).grid(row=2, column=1, sticky=tk.W, pady=10)
-        #self.entr_ano = ttk.Entry(frame, width=5).grid(row=4, column=1, sticky=tk.W, pady=10)
+        self.entr_funcionario = ttk.Entry(lblframe_dados_documentos, width=60)
+        self.entr_funcionario.grid(row=0, column=1, columnspan=6, sticky=tk.W, pady=10)
+        self.entr_CPF = ttk.Entry(lblframe_dados_documentos, width=30)
+        self.entr_CPF.grid(row=1, column=1, sticky=tk.W, pady=10)
+        self.entr_apelido = ttk.Entry(lblframe_dados_documentos)
+        self.entr_apelido.grid(row=1, column=3, sticky=tk.W, pady=10)
+
+        #LabelFrame dentro do Frame - Anuencias
+        lblframe_anuencias = ttk.LabelFrame(frame, text="Anuências:", padding=10)
+        lblframe_anuencias.grid(row=2, column=0, columnspan=6, sticky="ew", padx=10, pady=10)   
+
+        ttk.Label(lblframe_anuencias, text="Técnico O&M: ").grid(row=0, column=0, padx=(0, 50), sticky=tk.W)
+        ttk.Label(lblframe_anuencias, text="Supervisor O&M: ").grid(row=1, column=0, sticky=tk.W)
+        ttk.Label(lblframe_anuencias, text="Técnico PA: ").grid(row=2, column=0, sticky=tk.W)
 
         # Variáveis para os Checkbuttons
         self.var_nr10_tec_oem = tk.BooleanVar(value=False)
@@ -80,37 +79,40 @@ class genAnuencias:
         self.var_nr10_sep_tec_pa = tk.BooleanVar(value=False)
         self.var_nr12_tec_pa = tk.BooleanVar(value=False)
         self.var_nr33_tec_pa = tk.BooleanVar(value=False)
-        self.var_nr35_tec_pa = tk.BooleanVar(value=False)
+        self.var_nr35_tec_pa = tk.BooleanVar(value=False)        
 
         # Checkbox
-        self.ckbx_nr10_tec_oem = ttk.Checkbutton(frame, text="NR10", variable=self.var_nr10_tec_oem).grid(row=5, column=1, sticky=tk.W, padx=(0, 10), pady=10)
-        self.ckbx_nr10_sep_tec_oem = ttk.Checkbutton(frame, text="NR10 SEP", variable=self.var_nr10_sep_tec_oem).grid(row=5, column=2, sticky=tk.W, padx=(0, 10))
-        self.ckbx_nr12_tec_oem = ttk.Checkbutton(frame, text="NR12", variable=self.var_nr12_tec_oem).grid(row=5, column=3, sticky=tk.W, padx=(0, 10))
-        self.ckbx_nr33_tec_oem = ttk.Checkbutton(frame, text="NR33", variable=self.var_nr33_tec_oem).grid(row=5, column=4, sticky=tk.W, padx=(0, 10))
-        self.ckbx_nr35_tec_oem = ttk.Checkbutton(frame, text="NR35", variable=self.var_nr35_tec_oem).grid(row=5, column=5, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr10_tec_oem = ttk.Checkbutton(lblframe_anuencias, text="NR10", variable=self.var_nr10_tec_oem).grid(row=0, column=1, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr10_sep_tec_oem = ttk.Checkbutton(lblframe_anuencias, text="NR10 SEP", variable=self.var_nr10_sep_tec_oem).grid(row=0, column=2, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr12_tec_oem = ttk.Checkbutton(lblframe_anuencias, text="NR12", variable=self.var_nr12_tec_oem).grid(row=0, column=3, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr33_tec_oem = ttk.Checkbutton(lblframe_anuencias, text="NR33", variable=self.var_nr33_tec_oem).grid(row=0, column=4, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr35_tec_oem = ttk.Checkbutton(lblframe_anuencias, text="NR35", variable=self.var_nr35_tec_oem).grid(row=0, column=5, sticky=tk.W, padx=(0, 10))
 
-        self.ckbx_nr10_sup_oem = ttk.Checkbutton(frame, text="NR10", variable=self.var_nr10_sup_oem).grid(row=6, column=1, sticky=tk.W, padx=(0, 10), pady=10)
-        self.ckbx_nr10_sep_sup_oem = ttk.Checkbutton(frame, text="NR10 SEP", variable=self.var_nr10_sep_sup_oem).grid(row=6, column=2, sticky=tk.W, padx=(0, 10))
-        self.ckbx_nr12_sup_oem = ttk.Checkbutton(frame, text="NR12", variable=self.var_nr12_sup_oem).grid(row=6, column=3, sticky=tk.W, padx=(0, 10))
-        self.ckbx_nr33_sup_oem = ttk.Checkbutton(frame, text="NR33", variable=self.var_nr33_sup_oem).grid(row=6, column=4, sticky=tk.W, padx=(0, 10))
-        self.ckbx_nr35_sup_oem = ttk.Checkbutton(frame, text="NR35", variable=self.var_nr35_sup_oem).grid(row=6, column=5, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr10_sup_oem = ttk.Checkbutton(lblframe_anuencias, text="NR10", variable=self.var_nr10_sup_oem).grid(row=1, column=1, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr10_sep_sup_oem = ttk.Checkbutton(lblframe_anuencias, text="NR10 SEP", variable=self.var_nr10_sep_sup_oem).grid(row=1, column=2, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr12_sup_oem = ttk.Checkbutton(lblframe_anuencias, text="NR12", variable=self.var_nr12_sup_oem).grid(row=1, column=3, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr33_sup_oem = ttk.Checkbutton(lblframe_anuencias, text="NR33", variable=self.var_nr33_sup_oem).grid(row=1, column=4, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr35_sup_oem = ttk.Checkbutton(lblframe_anuencias, text="NR35", variable=self.var_nr35_sup_oem).grid(row=1, column=5, sticky=tk.W, padx=(0, 10))
 
-        self.ckbx_nr10_tec_pa = ttk.Checkbutton(frame, text="NR10", variable=self.var_nr10_tec_pa).grid(row=7, column=1, sticky=tk.W, padx=(0, 10), pady=10)
-        self.ckbx_nr10_sep_tec_pa = ttk.Checkbutton(frame, text="NR10 SEP", variable=self.var_nr10_sep_tec_pa).grid(row=7, column=2, sticky=tk.W, padx=(0, 10))
-        self.ckbx_nr12_tec_pa = ttk.Checkbutton(frame, text="NR12", variable=self.var_nr12_tec_pa).grid(row=7, column=3, sticky=tk.W, padx=(0, 10))
-        self.ckbx_nr33_tec_pa = ttk.Checkbutton(frame, text="NR33", variable=self.var_nr33_tec_pa).grid(row=7, column=4, sticky=tk.W, padx=(0, 10))
-        self.ckbx_nr35_tec_pa = ttk.Checkbutton(frame, text="NR35", variable=self.var_nr35_tec_pa).grid(row=7, column=5, sticky=tk.W, padx=(0, 10))   
+        self.ckbx_nr10_tec_pa = ttk.Checkbutton(lblframe_anuencias, text="NR10", variable=self.var_nr10_tec_pa).grid(row=2, column=1, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr10_sep_tec_pa = ttk.Checkbutton(lblframe_anuencias, text="NR10 SEP", variable=self.var_nr10_sep_tec_pa).grid(row=2, column=2, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr12_tec_pa = ttk.Checkbutton(lblframe_anuencias, text="NR12", variable=self.var_nr12_tec_pa).grid(row=2, column=3, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr33_tec_pa = ttk.Checkbutton(lblframe_anuencias, text="NR33", variable=self.var_nr33_tec_pa).grid(row=2, column=4, sticky=tk.W, padx=(0, 10))
+        self.ckbx_nr35_tec_pa = ttk.Checkbutton(lblframe_anuencias, text="NR35", variable=self.var_nr35_tec_pa).grid(row=2, column=5, sticky=tk.W, padx=(0, 10))   
 
-        # Btn        
-        self.btn_selecionar_pasta = ttk.Button(frame, text="...", command=self.selecionar_pasta).grid(row=8, column=5, sticky=tk.W, padx=(0, 10))   
-        self.lbl_pastaselecionada = tk.Label(frame, text="Selecione a pasta", wraplength=350)
-        self.lbl_pastaselecionada.grid(row=8, column=1, columnspan=4, sticky=tk.W, padx=(0,10))
+        #LabelFrame dentro do Frame - Opções
+        lblframe_opcoes = ttk.LabelFrame(frame, text="Opções: ", padding=10)
+        lblframe_opcoes.grid(row=3, column=0, columnspan=6, sticky="ew", padx=10, pady=10)                
+
+        # Btn  
+        ttk.Label(lblframe_opcoes, text="Salvar Arquivos em: ").grid(row=0, column=0, sticky=tk.W)      
+        self.btn_selecionar_pasta = ttk.Button(lblframe_opcoes, text="...", command=self.selecionar_pasta).grid(row=0, column=1, sticky=tk.W, padx=(0, 10))   
+        self.lbl_pastaselecionada = tk.Label(lblframe_opcoes, text="Selecione a pasta", wraplength=350)
+        self.lbl_pastaselecionada.grid(row=0, column=2, columnspan=4, sticky=tk.W, padx=(0,10))
 
         # Botão
         self.btn_gerar = ttk.Button(frame, text="Gerar Anuências", command=self.verificar_checkbuttons).grid(row=9, column=0, sticky=tk.W, padx=(0, 10), pady=10)
         self.lbl_avisoGeracao = ttk.Label(frame, text="Aguarde, os documento(s) estão sendo gerado(s)... ")
-        #self.lbl_avisoGeracao.grid(row=9, column=1, columnspan=4, sticky=tk.W)
-        #self.lbl_avisoGeracao.grid_remove()
 
         # Defina os dados
         self.dados = {}       
