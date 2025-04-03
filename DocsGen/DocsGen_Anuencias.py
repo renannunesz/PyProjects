@@ -39,7 +39,7 @@ class genAnuencias:
 
         #LabelFrame dentro do Frame - Dados Documento
         lblframe_dados_documentos = ttk.LabelFrame(frame, text="Dados Documento:", padding=10)
-        lblframe_dados_documentos.grid(row=1, column=0, columnspan=6, sticky="ew", padx=10, pady=10)   
+        lblframe_dados_documentos.grid(row=1, column=0, columnspan=6, sticky="ew", padx=10, pady=5)   
 
         # Labels
         ttk.Label(lblframe_dados_documentos, text="Funcionário: ").grid(row=0, column=0, sticky=tk.W)
@@ -56,7 +56,7 @@ class genAnuencias:
 
         #LabelFrame dentro do Frame - Anuencias
         lblframe_anuencias = ttk.LabelFrame(frame, text="Anuências:", padding=10)
-        lblframe_anuencias.grid(row=2, column=0, columnspan=6, sticky="ew", padx=10, pady=10)   
+        lblframe_anuencias.grid(row=2, column=0, columnspan=6, sticky="ew", padx=10, pady=5)   
 
         ttk.Label(lblframe_anuencias, text="Técnico O&M: ").grid(row=0, column=0, padx=(0, 50), sticky=tk.W)
         ttk.Label(lblframe_anuencias, text="Supervisor O&M: ").grid(row=1, column=0, sticky=tk.W)
@@ -102,7 +102,7 @@ class genAnuencias:
 
         #LabelFrame dentro do Frame - Opções
         lblframe_opcoes = ttk.LabelFrame(frame, text="Opções: ", padding=10)
-        lblframe_opcoes.grid(row=3, column=0, columnspan=6, sticky="ew", padx=10, pady=10)                
+        lblframe_opcoes.grid(row=3, column=0, columnspan=6, sticky="ew", padx=10, pady=5)                
 
         # Btn  
         ttk.Label(lblframe_opcoes, text="Salvar Arquivos em: ").grid(row=0, column=0, sticky=tk.W)      

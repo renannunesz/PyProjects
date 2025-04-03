@@ -29,7 +29,7 @@ class PDFConverterApp:
 
         #LabelFrame dentro do Frame - Dados Documento
         lblframe_assinaturas = ttk.LabelFrame(frame, text="Opções:", padding=10)
-        lblframe_assinaturas.grid(row=1, column=0, columnspan=6, sticky="ew", padx=10, pady=10)            
+        lblframe_assinaturas.grid(row=1, column=0, columnspan=6, sticky="ew", padx=10, pady=5)            
 
         # Labels
         ttk.Label(lblframe_assinaturas, text="Arquivo PDF: ").grid(row=0, column=0, sticky=tk.W)
