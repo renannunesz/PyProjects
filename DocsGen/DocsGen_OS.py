@@ -33,7 +33,7 @@ class genOrdenServico:
         self.dir_pasta_selecionada = ""
 
         # Carregar a imagem
-        self.bg_image = Image.open(r"C:\PyProjects\DocsGen\background.png")
+        self.bg_image = Image.open(r"C:\PyProjects\DocsGen\bkg_osst.png")
         print(os.path.abspath(__file__))
         self.bg_photo = ImageTk.PhotoImage(self.bg_image)
         
@@ -42,7 +42,7 @@ class genOrdenServico:
 
         #LabelFrame dentro do Frame - Dados Documento
         lblframe_dados_documentos = ttk.LabelFrame(frame, text="Dados Documento:", padding=10)
-        lblframe_dados_documentos.grid(row=6, column=0, columnspan=6, sticky="ew", padx=10, pady=10)     
+        lblframe_dados_documentos.grid(row=6, column=0, columnspan=6, sticky="ew", padx=10, pady=5)     
 
         # Labels
         ttk.Label(lblframe_dados_documentos, text="Funcionário:").grid(row=1, column=0, sticky=tk.W)
@@ -70,7 +70,7 @@ class genOrdenServico:
 
         #LabelFrame dentro do Frame - Riscos Físicos
         lblframe_riscos_fisicos = ttk.LabelFrame(frame, text="Riscos Físicos:", padding=10)
-        lblframe_riscos_fisicos.grid(row=7, column=0, columnspan=6, sticky="ew", padx=10, pady=10)
+        lblframe_riscos_fisicos.grid(row=7, column=0, columnspan=6, sticky="ew", padx=10, pady=5)
 
         #Variáveis para os chechbuttons riscos fisicos
         self.var_ckbx_fisc_1 = tk.BooleanVar(value=False)
@@ -90,7 +90,7 @@ class genOrdenServico:
 
         #LabelFrame dentro do Frame - Riscos Quimicos
         lblframe_riscos_quimicos = ttk.LabelFrame(frame, text="Riscos Químicos:", padding=10)
-        lblframe_riscos_quimicos.grid(row=8, column=0, columnspan=6, sticky="ew", padx=10, pady=10)
+        lblframe_riscos_quimicos.grid(row=8, column=0, columnspan=6, sticky="ew", padx=10, pady=5)
 
         #Variáveis para os chechbuttons riscos quimicos
         self.var_ckbx_quim_1 = tk.BooleanVar(value=False)
@@ -143,7 +143,7 @@ class genOrdenServico:
 
         #LabelFrame dentro do Frame - Riscos Ergonômicos
         lblframe_riscos_ergonomicos = ttk.LabelFrame(frame, text="Riscos Ergonômicos:", padding=10)
-        lblframe_riscos_ergonomicos.grid(row=9, column=0, columnspan=6, sticky="ew", padx=10, pady=10)
+        lblframe_riscos_ergonomicos.grid(row=9, column=0, columnspan=6, sticky="ew", padx=10, pady=5)
 
         #Variáveis para os chechbuttons riscos Ergonômicos
         self.var_ckbx_ergo_1 = tk.BooleanVar(value=False)
@@ -163,7 +163,7 @@ class genOrdenServico:
 
         #LabelFrame dentro do Frame - Riscos Mecânicos
         lblframe_riscos_mecanicos = ttk.LabelFrame(frame, text="Riscos Mecânicos:", padding=10)
-        lblframe_riscos_mecanicos.grid(row=10, column=0, columnspan=6, sticky="ew", padx=10, pady=10) 
+        lblframe_riscos_mecanicos.grid(row=10, column=0, columnspan=6, sticky="ew", padx=10, pady=5) 
 
         #Variáveis para os chechbuttons riscos mecanicos
         self.var_ckbx_mecan_1 = tk.BooleanVar(value=False)
@@ -219,7 +219,7 @@ class genOrdenServico:
 
         #LabelFrame dentro do Frame - Opções
         lblframe_opcoes = ttk.LabelFrame(frame, text="Opções: ", padding=10)
-        lblframe_opcoes.grid(row=11, column=0, columnspan=6, sticky="ew", padx=10, pady=10)
+        lblframe_opcoes.grid(row=11, column=0, columnspan=6, sticky="ew", padx=10, pady=5)
 
         # Btn      
         ttk.Label(lblframe_opcoes, text="Salvar Arquivos em: ").grid(row=11, column=0, sticky=tk.W)       
