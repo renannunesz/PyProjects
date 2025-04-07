@@ -561,15 +561,18 @@ class genOrdenServico:
         arq_pdf_osst = os.path.join(self.dir_pasta_selecionada, f'OSST_{self.entr_apelido.get()}_{data_hoje}.pdf')
 
         # Acessar a primeira tabela (índice 0)
-        tabelaRiscos = doc.tables[1]
+        tabelaRiscosFisicos = doc.tables[1]
+        tabelaRiscosQuimicos = doc.tables[2]
+        tabelaRiscosErgonomicos = doc.tables[3]
+        tabelaRiscosMecanicos = doc.tables[4]
         # Definir a linha e a coluna da célula desejada
         #cell(linha, coluna) (índice começa em 0)
 
         # Acessar a célula e modificar o conteúdo
-        tabelaRiscos.cell(0, 1).text = riscoFisico1 + riscoFisico2 + riscoFisico3 + riscoFisico4
-        tabelaRiscos.cell(1, 1).text = riscosQuimicos
-        tabelaRiscos.cell(2, 1).text = riscosErgonomicos
-        tabelaRiscos.cell(3, 1).text = riscosMecanicos
+        tabelaRiscosFisicos.cell(0, 1).text = riscoFisico1 + riscoFisico2 + riscoFisico3 + riscoFisico4
+        tabelaRiscosQuimicos.cell(0, 1).text = riscosQuimicos
+        tabelaRiscosErgonomicos.cell(0, 1).text = riscosErgonomicos
+        tabelaRiscosMecanicos.cell(0, 1).text = riscosMecanicos
 
         # Salve o documento editado
         doc.save(arq_osst)
