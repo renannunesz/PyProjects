@@ -1,6 +1,15 @@
 @echo off
 cd C:\PyProjects
-git pull origin main
+
+:: Descarta qualquer modificação local
+git reset --hard
+
+:: Garante que você tem os últimos dados do repositório remoto
+git fetch --all
+
+:: Força a sincronização com o repositório remoto
+git reset --hard origin/main
+
 if %ERRORLEVEL%==0 (
     echo Atualização concluída com sucesso!
 ) else (
