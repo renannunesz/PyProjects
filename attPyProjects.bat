@@ -11,8 +11,8 @@ git fetch --all
 git reset --hard origin/main
 
 if %ERRORLEVEL%==0 (
-    echo Atualização concluída com sucesso!
+    echo Atualizacao concluida com sucesso!
 ) else (
-    echo Houve um erro durante a atualização.
+    echo Houve um erro durante a atualizacao!
 )
 pause

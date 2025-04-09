@@ -107,6 +107,7 @@ class genOrdenServico:
         self.var_ckbx_quim_12 = tk.BooleanVar(value=False)
         self.var_ckbx_quim_13 = tk.BooleanVar(value=False)
         self.var_ckbx_quim_14 = tk.BooleanVar(value=False)
+        self.var_ckbx_quim_15 = tk.BooleanVar(value=False)
 
         # Opcoes para garantir que fique visível
         self.ckbx_quim_1 = ttk.Checkbutton(lblframe_riscos_quimicos, text=" • Bário e composto solúveis como Ba", variable=self.var_ckbx_quim_1)
@@ -138,8 +139,10 @@ class genOrdenServico:
         
         self.ckbx_quim_13 = ttk.Checkbutton(lblframe_riscos_quimicos, text=" • Magnésio (Mg)", variable=self.var_ckbx_quim_13)
         self.ckbx_quim_13.grid(row=3, column=0, sticky=tk.W, padx=5, pady=5)       
-        self.ckbx_quim_14 = ttk.Checkbutton(lblframe_riscos_quimicos, text=" • Não se Aplica", variable=self.var_ckbx_quim_14) 
-        self.ckbx_quim_14.grid(row=3, column=1, sticky=tk.W, padx=5, pady=5)                   
+        self.ckbx_quim_14 = ttk.Checkbutton(lblframe_riscos_quimicos, text=" • Fumos metálicos", variable=self.var_ckbx_quim_14)
+        self.ckbx_quim_14.grid(row=3, column=1, sticky=tk.W, padx=5, pady=5)         
+        self.ckbx_quim_15 = ttk.Checkbutton(lblframe_riscos_quimicos, text=" • Não se Aplica", variable=self.var_ckbx_quim_15) 
+        self.ckbx_quim_15.grid(row=3, column=2, sticky=tk.W, padx=5, pady=5)                   
 
         #LabelFrame dentro do Frame - Riscos Ergonômicos
         lblframe_riscos_ergonomicos = ttk.LabelFrame(frame, text="Riscos Ergonômicos:", padding=10)
@@ -432,7 +435,8 @@ class genOrdenServico:
             self.var_ckbx_quim_11, 
             self.var_ckbx_quim_12,
             self.var_ckbx_quim_13,
-            self.var_ckbx_quim_14
+            self.var_ckbx_quim_14,
+            self.var_ckbx_quim_15
             ]
         
         checkboxQuimicos = [
@@ -449,7 +453,8 @@ class genOrdenServico:
             self.ckbx_quim_11,
             self.ckbx_quim_12,
             self.ckbx_quim_13,
-            self.ckbx_quim_14
+            self.ckbx_quim_14,
+            self.ckbx_quim_15
             ]
         
         riscosQuimicos = ""
