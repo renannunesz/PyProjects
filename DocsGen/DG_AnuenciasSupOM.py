@@ -30,6 +30,13 @@ class genAnuencias:
         frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S), padx=10, pady=10)
         self.dir_pasta_selecionada = ""
 
+        # Carregar a imagem
+        self.bg_image = Image.open(r"C:\PyProjects\DocsGen\bkg_anuencias.png")
+        self.bg_photo = ImageTk.PhotoImage(self.bg_image)
+        
+        # Inserir a imagem no topo do formulário
+        ttk.Label(frame, image=self.bg_photo).grid(row=0, column=0, columnspan=6, pady=(0, 20))        
+
         #LabelFrame dentro do Frame - Dados Documento
         lblframe_dados_documentos = ttk.LabelFrame(frame, text="Dados Funcionário:", padding=10)
         lblframe_dados_documentos.grid(row=1, column=0, sticky="ew", padx=10, pady=5)   

@@ -20,11 +20,12 @@ class PDFConverterApp:
         self.dir_pasta_selecionada = ""
 
         # Carregar a imagem
-        #self.bg_image = Image.open(r"C:\PyProjects\RemoveSign\bkg_removesign.png")
-        #self.bg_photo = ImageTk.PhotoImage(self.bg_image)
+        self.bg_image = Image.open(r"C:\PyProjects\DocsGen\bkg_removesign.png")
+        print(os.path.abspath(__file__))
+        self.bg_photo = ImageTk.PhotoImage(self.bg_image)
         
         # Inserir a imagem no topo do formulário
-        #ttk.Label(frame, text="Remover Assinaturas Sobrepostas", font=("Arial", 16, "bold")).grid(row=0, column=0, columnspan=6, pady=(0, 20))
+        ttk.Label(frame, image=self.bg_photo).grid(row=0, column=0, columnspan=6, pady=(0, 20))
 
         #LabelFrame dentro do Frame - Dados Documento
         lblframe_assinaturas = ttk.LabelFrame(frame, text="Opções:", padding=10)
