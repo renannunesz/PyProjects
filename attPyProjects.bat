@@ -1,18 +1,23 @@
 @echo off
-cd C:\PyProjects
+setlocal
 
-:: Descarta qualquer modificação local
-git reset --hard
+set REPO_DIR=C:\PyProjects
+set REPO_URL=https://github.com/renannunesz/PyProjects.git
 
-:: Garante que você tem os últimos dados do repositório remoto
-git fetch --all
+:: Se a pasta existir, remove tudo
+if exist "%REPO_DIR%" (
+    echo Apagando conteudo existente em %REPO_DIR%...
+    rmdir /s /q "%REPO_DIR%"
+)
 
-:: Força a sincronização com o repositório remoto
-git reset --hard origin/main
+:: Clona o repositório remoto
+echo Clonando repositório...
+git clone %REPO_URL% "%REPO_DIR%"
 
 if %ERRORLEVEL%==0 (
-    echo Atualizacao concluida com sucesso!
+    echo Clonagem concluida com sucesso!
 ) else (
-    echo Houve um erro durante a atualizacao!
+    echo Erro ao clonar o repositório!
 )
+
 pause
