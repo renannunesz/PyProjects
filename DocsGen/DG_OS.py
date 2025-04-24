@@ -537,7 +537,7 @@ class genOrdenServico:
         elif tipoGHE == "02":
             documentoModelo = 'osst_ghe02.docx'
         elif tipoGHE == "03":
-            documentoModelo = 'osst_ghe03_.docx'
+            documentoModelo = 'osst_ghe03.docx'
         elif tipoGHE == "04":
             documentoModelo = 'osst_ghe04.docx'
         else:
