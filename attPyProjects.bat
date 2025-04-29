@@ -1,23 +1,25 @@
 @echo off
-setlocal
 
-set REPO_DIR=C:\PyProjects
-set REPO_URL=https://github.com/renannunesz/PyProjects.git
+:: Caminho do diretório onde os arquivos devem ser atualizados
+set DESTINO=C:\PyProjects
 
-:: Se a pasta existir, remove tudo
-if exist "%REPO_DIR%" (
-    echo Apagando conteudo existente em %REPO_DIR%...
-    rmdir /s /q "%REPO_DIR%"
-)
+:: Caminho temporário para o clone
+set TEMP=%TEMP%\repo_temp
 
-:: Clona o repositório remoto
-echo Clonando repositório...
-git clone %REPO_URL% "%REPO_DIR%"
+:: URL do repositório remoto
+set REPO=https://github.com/renannunesz/PyProjects.git
 
-if %ERRORLEVEL%==0 (
-    echo Clonagem concluida com sucesso!
-) else (
-    echo Erro ao clonar o repositório!
-)
+:: Apaga pasta temporária se já existir
+rmdir /s /q "%TEMP%"
 
+:: Clona o repositório na pasta temporária
+git clone %REPO% "%TEMP%"
+
+:: Copia os arquivos do repositório clonado para o destino, sobrescrevendo tudo
+xcopy "%TEMP%\*" "%DESTINO%\" /E /H /Y /C
+
+:: Limpa a pasta temporária
+rmdir /s /q "%TEMP%"
+
+echo Atualização concluída com sucesso!
 pause
