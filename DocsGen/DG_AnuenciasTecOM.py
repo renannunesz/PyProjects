@@ -332,42 +332,7 @@ class genAnuencias:
         doc = word.Documents.Open(os.path.abspath(arq_doc_nr35))
         doc.SaveAs(os.path.abspath(arq_pdf_nr35), FileFormat=17)
         doc.Close()
-        word.Quit()        
-
-        # Receber os dados
-        substituicoes =  {
-            'NOMEFUNCIONARIO': self.entr_funcionario.get(),
-            'DIAANUENCIA': datetime.today().strftime("%d"),
-            'MESANUENCIA': datetime.today().strftime("%B"),
-            'ANOANUENCIA': datetime.today().strftime("%Y"),
-            'CPFFUNCIONARIO': self.entr_CPF.get()
-        }    
-
-        # Abra o documento existente
-        doc = Document(os.path.join(caminho_base,'sup_oem', 'nr33_sup_oem.docx'))
-
-        # Substitua as palavras específicas nos parágrafos
-        for paragraph in doc.paragraphs:
-            paragraph = self.substituir_texto(paragraph, substituicoes)
-
-        # Substitua as palavras específicas nas tabelas
-        for table in doc.tables:
-            for row in table.rows:
-                for cell in row.cells:
-                    cell = self.substituir_texto_tabela(cell, substituicoes)       
-    
-        arq_doc_nr33 = os.path.join(caminho_base,'sup_oem', 'NR33_temp.docx')
-        arq_pdf_nr33 = os.path.join(self.dir_pasta_selecionada, f'NR33_{self.entr_apelido.get()}_{data_hoje}_sup_OM.pdf')
-
-        # Salve o documento editado
-        doc.save(arq_doc_nr33)
-
-        # Converta o arquivo Word para PDF usando comtypes.client
-        word = comtypes.client.CreateObject('Word.Application')
-        doc = word.Documents.Open(os.path.abspath(arq_doc_nr33))
-        doc.SaveAs(os.path.abspath(arq_pdf_nr33), FileFormat=17)
-        doc.Close()
-        word.Quit()        
+        word.Quit()              
 
     def verificar_checkbuttons(self):      
 
@@ -446,7 +411,7 @@ class genAnuencias:
 
                     messagebox.showinfo("Alerta!", "Documento(s) Salvo(s) com Sucesso!") 
 
-                    self.lbl_avisoGeracao.grid_remove()
+                    #self.lbl_avisoGeracao.grid_remove()
 
                     return
                 
