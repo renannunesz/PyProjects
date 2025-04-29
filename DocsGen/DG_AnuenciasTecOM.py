@@ -380,9 +380,7 @@ class genAnuencias:
 
         else:
 
-            if self.validar_cpf(cpf_digitado):    
-
-                self.lbl_avisoGeracao.grid(row=9, column=1, columnspan=4, sticky=tk.W)            
+            if self.validar_cpf(cpf_digitado):              
 
                 notification.notify(
                     title="Aviso",
