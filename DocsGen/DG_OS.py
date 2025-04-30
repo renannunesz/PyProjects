@@ -67,6 +67,10 @@ class genOrdenServico:
 
         ttk.Label(lblframe_dados_documentos, text="Obs: Os EPIs são definidos de acordo com o GHE selecionado. ").grid(row=2, column=5, columnspan=4 ,sticky=tk.W)
 
+        ttk.Label(lblframe_dados_documentos, text="HSE Responsável: ").grid(row=3, column=0, sticky=tk.W)
+        self.cbbx_hse = ttk.Combobox(lblframe_dados_documentos, values=["Bruna Petroni", "Leonardo Silverio", "Manoel Jefete"])
+        self.cbbx_hse.grid(row=3, column=1, sticky=tk.W, pady=10)
+
         #LabelFrame dentro do Frame - Riscos Físicos
         lblframe_riscos_fisicos = ttk.LabelFrame(frame, text="Riscos Físicos:", padding=10)
         lblframe_riscos_fisicos.grid(row=7, column=0, columnspan=6, sticky="ew", padx=10, pady=5)
