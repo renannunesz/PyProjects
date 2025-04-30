@@ -521,7 +521,21 @@ class genOrdenServico:
         for varMeca, ckbMeca in zip(variaveisMecanicos, checkboxMecanicos):
             if varMeca.get():
                 riscosMecanicos += ckbMeca.cget("text") + "\n"      
+
+        hseNome = self.cbbx_hse.get()
+
+        if hseNome == "Bruna Petroni":
+            nomeHSE = "BRUNA PETRONI CEZARIO"
+            registroHSE = "CREA-RN: 2122993685"
+        elif hseNome == "Leonardo Silverio":
+            nomeHSE = "LEONARDO SILVERIO FERREIRA"
+            registroHSE = "MTE/RN: 1360"
+        elif hseNome == "Manoel Jefete":
+            nomeHSE = "MANOEL JEFETE DA SILVA TENONIO"
+            registroHSE = "MTE/RN: 1805"
         
+        #["Bruna Petroni", "Leonardo Silverio", "Manoel Jefete"])
+
         # Receber os dados
         substituicoes =  {
             'NOMEFUNCIONARIO': self.entr_funcionario.get(),
@@ -530,7 +544,9 @@ class genOrdenServico:
             'ATVFUNCIONARIO': self.atividade_funcao(),
             'DIAOS': datetime.today().strftime("%d"),
             'MESOS': datetime.today().strftime("%B"),
-            'ANOOS': datetime.today().strftime("%Y")            
+            'ANOOS': datetime.today().strftime("%Y"),
+            'NOMEHSE': nomeHSE,
+            'REGISTROHSE': registroHSE            
         }        
 
         # Recebe tipo de GHE
