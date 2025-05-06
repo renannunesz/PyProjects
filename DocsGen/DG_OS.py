@@ -165,7 +165,7 @@ class genOrdenServico:
         self.ckbx_ergo_4.grid(row=0, column=3, sticky=tk.W, padx=5, pady=5)        
 
         #LabelFrame dentro do Frame - Riscos Mecânicos
-        lblframe_riscos_mecanicos = ttk.LabelFrame(frame, text="Riscos Mecânicos:", padding=10)
+        lblframe_riscos_mecanicos = ttk.LabelFrame(frame, text="Riscos de Acidente:", padding=10)
         lblframe_riscos_mecanicos.grid(row=10, column=0, columnspan=6, sticky="ew", padx=10, pady=5) 
 
         #Variáveis para os chechbuttons riscos mecanicos
