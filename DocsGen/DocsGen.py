@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 class App:
     def __init__(self, root):
         self.root = root
-        self.root.title("DocsGen - Vestas - v2.060525")
+        self.root.title("DocsGen - Vestas - v2.270525")
         self.root.geometry("1280x720")
         self.root.resizable(False, False)
 
