@@ -18,6 +18,23 @@ data_hoje = hoje.strftime("%d%m%Y")
 # Obtém o diretório onde o script está localizado
 caminho_base = os.path.dirname(os.path.abspath(__file__))
 
+# Lista de meses em português
+meses = {
+    1: "Janeiro",
+    2: "Fevereiro",
+    3: "Março",
+    4: "Abril",
+    5: "Maio",
+    6: "Junho",
+    7: "Julho",
+    8: "Agosto",
+    9: "Setembro",
+    10: "Outubro",
+    11: "Novembro",
+    12: "Dezembro"
+}
+
+
 class genAnuencias:
     def __init__(self, root):
         # Crie a interface gráfica
@@ -155,7 +172,7 @@ class genAnuencias:
         substituicoes =  {
             'NOMEFUNCIONARIO': self.entr_funcionario.get(),
             'DIAANUENCIA': datetime.today().strftime("%d"),
-            'MESANUENCIA': datetime.today().strftime("%B"),
+            'MESANUENCIA': meses[datetime.today().month],
             'ANOANUENCIA': datetime.today().strftime("%Y"),
             'CPFFUNCIONARIO': self.entr_CPF.get()
         }             
@@ -192,7 +209,7 @@ class genAnuencias:
         substituicoes =  {
             'NOMEFUNCIONARIO': self.entr_funcionario.get(),
             'DIAANUENCIA': datetime.today().strftime("%d"),
-            'MESANUENCIA': datetime.today().strftime("%B"),
+            'MESANUENCIA': meses[datetime.today().month],
             'ANOANUENCIA': datetime.today().strftime("%Y"),
             'CPFFUNCIONARIO': self.entr_CPF.get()
         }    
@@ -229,7 +246,7 @@ class genAnuencias:
         substituicoes =  {
             'NOMEFUNCIONARIO': self.entr_funcionario.get(),
             'DIAANUENCIA': datetime.today().strftime("%d"),
-            'MESANUENCIA': datetime.today().strftime("%B"),
+            'MESANUENCIA': meses[datetime.today().month],
             'ANOANUENCIA': datetime.today().strftime("%Y"),
             'CPFFUNCIONARIO': self.entr_CPF.get()
         }    
@@ -266,7 +283,7 @@ class genAnuencias:
         substituicoes =  {
             'NOMEFUNCIONARIO': self.entr_funcionario.get(),
             'DIAANUENCIA': datetime.today().strftime("%d"),
-            'MESANUENCIA': datetime.today().strftime("%B"),
+            'MESANUENCIA': meses[datetime.today().month],
             'ANOANUENCIA': datetime.today().strftime("%Y"),
             'CPFFUNCIONARIO': self.entr_CPF.get()
         }    
@@ -303,7 +320,7 @@ class genAnuencias:
         substituicoes =  {
             'NOMEFUNCIONARIO': self.entr_funcionario.get(),
             'DIAANUENCIA': datetime.today().strftime("%d"),
-            'MESANUENCIA': datetime.today().strftime("%B"),
+            'MESANUENCIA': meses[datetime.today().month],
             'ANOANUENCIA': datetime.today().strftime("%Y"),
             'CPFFUNCIONARIO': self.entr_CPF.get()
         }    

@@ -20,6 +20,22 @@ data_hoje = hoje.strftime("%d%m%Y")
 # Retorna o diretório onde o script está localizado
 caminho_base = os.path.dirname(os.path.abspath(__file__))
 
+# Lista de meses em português
+meses = {
+    1: "Janeiro",
+    2: "Fevereiro",
+    3: "Março",
+    4: "Abril",
+    5: "Maio",
+    6: "Junho",
+    7: "Julho",
+    8: "Agosto",
+    9: "Setembro",
+    10: "Outubro",
+    11: "Novembro",
+    12: "Dezembro"
+}
+
 class genOrdenServico:
     def __init__(self, root):
         # Crie a interface gráfica
@@ -543,7 +559,7 @@ class genOrdenServico:
             'FUNCFUNCIONARIO': self.cbbx_funcao.get(),
             'ATVFUNCIONARIO': self.atividade_funcao(),
             'DIAOS': datetime.today().strftime("%d"),
-            'MESOS': datetime.today().strftime("%B"),
+            'MESOS': meses[datetime.today().month],
             'ANOOS': datetime.today().strftime("%Y"),
             'NOMEHSE': nomeHSE,
             'REGISTROHSE': registroHSE            
