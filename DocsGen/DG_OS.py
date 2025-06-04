@@ -543,12 +543,15 @@ class genOrdenServico:
         if hseNome == "Bruna Petroni":
             nomeHSE = "BRUNA PETRONI CEZARIO"
             registroHSE = "CREA-RN: 2122993685"
+            funcaoHSE = "Engenheiro(a) de Segurança do Trabalho"
         elif hseNome == "Leonardo Silverio":
             nomeHSE = "LEONARDO SILVERIO FERREIRA"
             registroHSE = "MTE/RN: 1360"
+            funcaoHSE = "Técnico(a) de Segurança do Trabalho"
         elif hseNome == "Manoel Jefete":
             nomeHSE = "MANOEL JEFETE DA SILVA TENONIO"
             registroHSE = "MTE/RN: 1805"
+            funcaoHSE = "Engenheiro(a) de Segurança do Trabalho"
         
         #["Bruna Petroni", "Leonardo Silverio", "Manoel Jefete"])
 
@@ -562,7 +565,8 @@ class genOrdenServico:
             'MESOS': meses[datetime.today().month],
             'ANOOS': datetime.today().strftime("%Y"),
             'NOMEHSE': nomeHSE,
-            'REGISTROHSE': registroHSE            
+            'REGISTROHSE': registroHSE,
+            'FUNCAOHSE': funcaoHSE
         }        
 
         # Recebe tipo de GHE
