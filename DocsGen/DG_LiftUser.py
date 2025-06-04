@@ -46,6 +46,7 @@ class genSIT:
         ttk.Label(lblframe_dados_documentos, text="Iniciais: ").grid(row=1, column=0, sticky=tk.W)
         ttk.Label(lblframe_dados_documentos, text="Data: ").grid(row=2, column=0, sticky=tk.W)
         ttk.Label(lblframe_dados_documentos, text="ID Curso/ID Aluno: ").grid(row=3, column=0, sticky=tk.W)
+        ttk.Label(lblframe_dados_documentos, text="Nome Instrutor: ").grid(row=4, column=0, sticky=tk.W)
 
         # Entry (input)
         self.entr_funcionario = ttk.Entry(lblframe_dados_documentos, width=60)
@@ -57,6 +58,8 @@ class genSIT:
         ttk.Label(lblframe_dados_documentos, text=" Formato: DD/MM/AAAA").grid(row=2, column=2, sticky=tk.W)
         self.entr_id = ttk.Entry(lblframe_dados_documentos)
         self.entr_id.grid(row=3, column=1, sticky=tk.W, pady=5)
+        self.entr_instrutor = ttk.Entry(lblframe_dados_documentos, width=60)
+        self.entr_instrutor.grid(row=4, column=1, columnspan=6, sticky=tk.W, pady=5)   
         
         #LabelFrame dentro do Frame - Opções
         lblframe_opcoes = ttk.LabelFrame(frame, text="Opções: ", padding=10)
@@ -90,7 +93,7 @@ class genSIT:
                         if palavra_antiga in run.text:
                             run.text = run.text.replace(palavra_antiga, palavra_nova)
                             run.bold = True  # Mantém o negrito
-                        run.font.name = 'Arial'
+                        run.font.name = 'Arial'                
                 else:
                     for run in paragraph.runs:
                         if palavra_antiga in run.text:
@@ -110,10 +113,13 @@ class genSIT:
     def gerar_sit(self, substituicoes):
 
         # Receber os dados
+        print(self.entr_instrutor.get())
+
         substituicoes =  {
             'NOMEFUNCIONARIO': self.entr_funcionario.get(),
             'DATALIFT': self.entr_data.get(),
-            'IDCURSOFUNCIONARIO': self.entr_id.get()
+            'IDCURSOFUNCIONARIO': self.entr_id.get(),
+            'NOMEINSTRUTOR' : self.entr_instrutor.get()
         }             
 
         dataCurso = self.entr_data.get().replace("/","")
