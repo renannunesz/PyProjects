@@ -551,7 +551,7 @@ class genOrdenServico:
         elif hseNome == "Manoel Jefete":
             nomeHSE = "MANOEL JEFETE DA SILVA TENONIO"
             registroHSE = "MTE/RN: 1805"
-            funcaoHSE = "Engenheiro(a) de Segurança do Trabalho"
+            funcaoHSE = "Técnico(a) de Segurança do Trabalho"
         
         #["Bruna Petroni", "Leonardo Silverio", "Manoel Jefete"])
 
