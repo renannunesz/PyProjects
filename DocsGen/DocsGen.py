@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 class App:
     def __init__(self, root):
         self.root = root
-        self.root.title("DocsGen - Vestas - v2.280525")
+        self.root.title("DocsGen - Vestas - v2.040625")
         self.root.geometry("1280x720")
         self.root.resizable(False, False)
 
@@ -52,12 +52,16 @@ class App:
         menu_sit = tk.Menu(menubar, tearoff=0)
         menu_sit.add_command(label="Gerar Novo", command=self.abrir_sit)
 
+        menu_lift = tk.Menu(menubar, tearoff=0)
+        menu_lift.add_command(label="Gerar Novo", command=self.abrir_lift)
+
         menu_assinaturas = tk.Menu(menubar, tearoff=0)
         menu_assinaturas.add_command(label="Remover Assinaturas", command=self.abrir_assinaturas)
 
         menubar.add_cascade(label="Anuências", menu=menu_anuencias)
         menubar.add_cascade(label="OS", menu=menu_os)
         menubar.add_cascade(label="SIT", menu=menu_sit)
+        menubar.add_cascade(label="Lift User", menu=menu_lift)
         menubar.add_cascade(label="Assinaturas", menu=menu_assinaturas)
         menubar.add_command(label="Sair", command=self.root.quit)
 
@@ -90,6 +94,10 @@ class App:
     def abrir_sit(self):
         print("Abrir tela de SIT")
         subprocess.Popen(["pythonw", r"C:\PyProjects\DocsGen\DG_SIT.py"])
+
+    def abrir_lift(self):
+        print("Abrir tela de Lift User")
+        subprocess.Popen(["pythonw", r"C:\PyProjects\DocsGen\DG_LiftUser.py"])        
 
     def abrir_assinaturas(self):
         print("Abrir tela de Assinaturas")
