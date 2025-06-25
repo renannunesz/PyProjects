@@ -44,6 +44,7 @@ class App:
         menu_anuencias.add_command(label="Supervisor de O&M", command=self.anuencias_sup_om)
         menu_anuencias.add_command(label="Tecnico de Pá", command=self.anuencias_tec_pa)
         menu_anuencias.add_command(label="Tecnico de Seg. Trabalho", command=self.anuencias_tec_seg)
+        menu_anuencias.add_command(label="Tecnico de Serviços Especiais Operacional", command=self.anuencias_tec_serv_esp_op)
 
         menu_os = tk.Menu(menubar, tearoff=0)
         #menu_os.add_command(label="Gerar Nova", command=self.abrir_os)
@@ -82,6 +83,9 @@ class App:
 
     def anuencias_tec_seg(self):
         subprocess.Popen(["pythonw", r"C:\PyProjects\DocsGen\DG_AnuenciasTecSEG.py"])             
+
+    def anuencias_tec_serv_esp_op(self):
+        subprocess.Popen(["pythonw", r"C:\PyProjects\DocsGen\DG_AnuenciasTecSERVESPCIOP.py"])              
 
     def abrir_os(self):
         print("Abrir tela de OS")
