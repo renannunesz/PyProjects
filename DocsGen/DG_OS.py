@@ -316,6 +316,7 @@ class genOrdenServico:
                 self.cbbx_funcao['values'] = [
                     "ANALISTA DE CUSTO",
                     "ANALISTA DE OPERACOES",
+                    "ANALISTA DE NEGOCIOS",
                     "COMPRADOR SR",
                     "COORDENADOR DE FROTA",
                     "COORDENADOR DE QUALIDADE",
