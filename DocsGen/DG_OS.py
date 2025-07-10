@@ -84,7 +84,7 @@ class genOrdenServico:
         ttk.Label(lblframe_dados_documentos, text="Obs: Os EPIs são definidos de acordo com o GHE selecionado. ").grid(row=2, column=5, columnspan=4 ,sticky=tk.W)
 
         ttk.Label(lblframe_dados_documentos, text="HSE Responsável: ").grid(row=3, column=0, sticky=tk.W)
-        self.cbbx_hse = ttk.Combobox(lblframe_dados_documentos, values=["Bruna Petroni", "Leonardo Silverio", "Manoel Jefete"])
+        self.cbbx_hse = ttk.Combobox(lblframe_dados_documentos, values=["Leonardo Silverio", "Manoel Jefete"])
         self.cbbx_hse.grid(row=3, column=1, sticky=tk.W, pady=10)
 
         #LabelFrame dentro do Frame - Riscos Físicos
@@ -541,11 +541,7 @@ class genOrdenServico:
 
         hseNome = self.cbbx_hse.get()
 
-        if hseNome == "Bruna Petroni":
-            nomeHSE = "BRUNA PETRONI CEZARIO"
-            registroHSE = "CREA-RN: 2122993685"
-            funcaoHSE = "Engenheiro(a) de Segurança do Trabalho"
-        elif hseNome == "Leonardo Silverio":
+        if hseNome == "Leonardo Silverio":
             nomeHSE = "LEONARDO SILVERIO FERREIRA"
             registroHSE = "MTE/RN: 1360"
             funcaoHSE = "Técnico(a) de Segurança do Trabalho"
