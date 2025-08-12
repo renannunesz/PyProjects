@@ -325,7 +325,9 @@ class genOrdenServico:
                     "PLANEJADOR",
                     "PROGRAMADOR",
                     "SUPERVISOR DE MATERIAIS",
-                    "SUPERVISOR DE PLANEJAMENTO",                    
+                    "SUPERVISOR DE PLANEJAMENTO", 
+                    "GERENTE DE RELACOES PUBLICAS SR",
+                    "CONSULTOR ADMINISTRATIVO"                   
                     ]
         elif gheSelecionado == "02":
                 self.cbbx_funcao['values'] = [
