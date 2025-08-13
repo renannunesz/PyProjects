@@ -43,6 +43,7 @@ class App:
         menu_anuencias.add_command(label="Tecnico de O&M", command=self.anuencias_tec_om)
         menu_anuencias.add_command(label="Supervisor de O&M", command=self.anuencias_sup_om)
         menu_anuencias.add_command(label="Tecnico de Pá", command=self.anuencias_tec_pa)
+        menu_anuencias.add_command(label="Tecnico de Pá Especialista", command=self.anuencias_tec_pa_esp)
         menu_anuencias.add_command(label="Tecnico de Seg. Trabalho", command=self.anuencias_tec_seg)
         menu_anuencias.add_command(label="Tecnico de Serviços Especiais Operacional", command=self.anuencias_tec_serv_esp_op)
 
@@ -79,7 +80,10 @@ class App:
         subprocess.Popen(["pythonw", r"C:\PyProjects\DocsGen\DG_AnuenciasSupOM.py"])
 
     def anuencias_tec_pa(self):
-        subprocess.Popen(["pythonw", r"C:\PyProjects\DocsGen\DG_AnuenciasTecPA.py"])                
+        subprocess.Popen(["pythonw", r"C:\PyProjects\DocsGen\DG_AnuenciasTecPA.py"])
+
+    def anuencias_tec_pa_esp(self):
+        subprocess.Popen(["pythonw", r"C:\PyProjects\DocsGen\DG_AnuenciasTecPAESP.py"])            
 
     def anuencias_tec_seg(self):
         subprocess.Popen(["pythonw", r"C:\PyProjects\DocsGen\DG_AnuenciasTecSEG.py"])             
