@@ -74,7 +74,7 @@ class genAnuencias:
         lblframe_anuencias = ttk.LabelFrame(frame, text="Anuências:", padding=10)
         lblframe_anuencias.grid(row=2, column=0, sticky="ew", padx=10, pady=5)   
 
-        ttk.Label(lblframe_anuencias, text="Contultor Admininstrativo: ").grid(row=0, column=0, padx=(0, 50), sticky=tk.W)
+        ttk.Label(lblframe_anuencias, text="Consultor Admininstrativo: ").grid(row=0, column=0, padx=(0, 50), sticky=tk.W)
 
         # Variáveis para os Checkbuttons
         self.var_nr10_consultor_adm = tk.BooleanVar(value=False)
