@@ -58,7 +58,7 @@ class genOrdenServico:
         self.entr_apelido.grid(row=1, column=5, sticky=tk.W, pady=10)
 
         ttk.Label(lblframe_dados_documentos, text="GHE: ").grid(row=2, column=0, sticky=tk.W)
-        self.cbbx_ghe = ttk.Combobox(lblframe_dados_documentos, values=["01", "02", "03", "04"], width=40)
+        self.cbbx_ghe = ttk.Combobox(lblframe_dados_documentos, values=["01", "02", "03", "04", "05"], width=40)
         self.cbbx_ghe.grid(row=2, column=1, sticky=tk.W, pady=10)
         self.cbbx_ghe.bind("<<ComboboxSelected>>", self.update_funcao)
 
@@ -380,8 +380,12 @@ class genOrdenServico:
                     "VICE PRESIDENTE DE OPERACOES",
                     "VICE PRESIDENTE REGIONAL CTO",
                     "VICE PRESIDENTE, PEOPLE & CULTURE, LATAM"
-                ]           
-    
+                ]     
+        elif gheSelecionado == "05":
+                self.cbbx_funcao['values'] = [
+                    "ALMOXARIFE"
+                ]
+
     def atividade_funcao(self):
         # Abrir o arquivo para leitura
         arquivo = os.path.join(caminho_base,'listaDescFuncoes.txt')
