@@ -10,6 +10,7 @@ from docx.enum.table import WD_ALIGN_VERTICAL
 from ttkbootstrap import Style
 from PIL import Image, ImageTk
 from datetime import datetime
+import tempfile
 
 # Seta a linguagem para Portugues do brasil.
 locale.setlocale(locale.LC_TIME, "Portuguese_Brazil.1252")
@@ -153,6 +154,8 @@ class genOrdenServico:
         self.var_ckbx_ergo_2 = tk.BooleanVar(value=False)
         self.var_ckbx_ergo_3 = tk.BooleanVar(value=False)
         self.var_ckbx_ergo_4 = tk.BooleanVar(value=False)
+        self.var_ckbx_ergo_5 = tk.BooleanVar(value=False)
+        self.var_ckbx_ergo_6 = tk.BooleanVar(value=False)
 
         # Opcoes para garantir que fique visível
         self.ckbx_ergo_1 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Esforço físico intenso", variable=self.var_ckbx_ergo_1)
@@ -161,8 +164,13 @@ class genOrdenServico:
         self.ckbx_ergo_2.grid(row=0, column=1, sticky=tk.W, padx=5, pady=5)
         self.ckbx_ergo_3 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Postura inadequada", variable=self.var_ckbx_ergo_3)
         self.ckbx_ergo_3.grid(row=0, column=2, sticky=tk.W, padx=5, pady=5)
-        self.ckbx_ergo_4 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Não se Aplica", variable=self.var_ckbx_ergo_4)
+        self.ckbx_ergo_4 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Frequente ação de puxar/empurrar cargas ou volumes ", variable=self.var_ckbx_ergo_4)
         self.ckbx_ergo_4.grid(row=0, column=3, sticky=tk.W, padx=5, pady=5)        
+        self.ckbx_ergo_5 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Levantamento e transporte manual de cargas ou volumes ", variable=self.var_ckbx_ergo_5)
+        self.ckbx_ergo_5.grid(row=1, column=0, sticky=tk.W, padx=5, pady=5)        
+        self.ckbx_ergo_6 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Não se Aplica", variable=self.var_ckbx_ergo_6)
+        self.ckbx_ergo_6.grid(row=1, column=1, sticky=tk.W, padx=5, pady=5)        
+
 
         #LabelFrame dentro do Frame - Riscos Mecânicos
         lblframe_riscos_mecanicos = ttk.LabelFrame(frame, text="Riscos Mecânicos:", padding=10)
@@ -184,6 +192,7 @@ class genOrdenServico:
         self.var_ckbx_mecan_13 = tk.BooleanVar(value=False)
         self.var_ckbx_mecan_14 = tk.BooleanVar(value=False)
         self.var_ckbx_mecan_15 = tk.BooleanVar(value=False)
+        self.var_ckbx_mecan_16 = tk.BooleanVar(value=False)
 
         # Opcoes para garantir que fique visível
         self.ckbx_mecan_1 = ttk.Checkbutton(lblframe_riscos_mecanicos, text=" • Animais peçonhentos", variable=self.var_ckbx_mecan_1 )
@@ -217,8 +226,10 @@ class genOrdenServico:
         self.ckbx_mecan_13.grid(row=3, column=0, sticky=tk.W, padx=5, pady=5)
         self.ckbx_mecan_14 = ttk.Checkbutton(lblframe_riscos_mecanicos, text=" • Trânsito de veículos pesados", variable=self.var_ckbx_mecan_14)
         self.ckbx_mecan_14.grid(row=3, column=1, sticky=tk.W, padx=5, pady=5)
-        self.ckbx_mecan_15 = ttk.Checkbutton(lblframe_riscos_mecanicos, text=" • Não se Aplica", variable=self.var_ckbx_mecan_15)
+        self.ckbx_mecan_15 = ttk.Checkbutton(lblframe_riscos_mecanicos, text=" • Diferença de nível menor ou igual a dois metros", variable=self.var_ckbx_mecan_15)
         self.ckbx_mecan_15.grid(row=3, column=2, sticky=tk.W, padx=5, pady=5)
+        self.ckbx_mecan_16 = ttk.Checkbutton(lblframe_riscos_mecanicos, text=" • Não se Aplica", variable=self.var_ckbx_mecan_16)
+        self.ckbx_mecan_16.grid(row=3, column=3, sticky=tk.W, padx=5, pady=5)
 
         #LabelFrame dentro do Frame - Opções
         lblframe_opcoes = ttk.LabelFrame(frame, text="Opções: ", padding=10)
@@ -383,7 +394,11 @@ class genOrdenServico:
                 ]     
         elif gheSelecionado == "05":
                 self.cbbx_funcao['values'] = [
-                    "ALMOXARIFE"
+                    "ALMOXARIFE",
+                    "ALMOXARIFE JR",
+                    "ALMOXARIFE PL",
+                    "ALMOXARIFE SR",
+                    "SUPERVISOR O&M"
                 ]
 
     def atividade_funcao(self):
@@ -471,14 +486,18 @@ class genOrdenServico:
             self.var_ckbx_ergo_1, 
             self.var_ckbx_ergo_2, 
             self.var_ckbx_ergo_3, 
-            self.var_ckbx_ergo_4
+            self.var_ckbx_ergo_4,
+            self.var_ckbx_ergo_5,
+            self.var_ckbx_ergo_6
             ]
         
         checkboxErgonomicos = [
             self.ckbx_ergo_1, 
             self.ckbx_ergo_2, 
             self.ckbx_ergo_3, 
-            self.ckbx_ergo_4
+            self.ckbx_ergo_4,
+            self.ckbx_ergo_5,
+            self.ckbx_ergo_6
             ]
         
         riscosErgonomicos = ""
@@ -502,7 +521,8 @@ class genOrdenServico:
             self.var_ckbx_mecan_12, 
             self.var_ckbx_mecan_13, 
             self.var_ckbx_mecan_14, 
-            self.var_ckbx_mecan_15
+            self.var_ckbx_mecan_15,
+            self.var_ckbx_mecan_16
             ]
         
         checkboxMecanicos = [
@@ -520,7 +540,8 @@ class genOrdenServico:
             self.ckbx_mecan_12, 
             self.ckbx_mecan_13, 
             self.ckbx_mecan_14, 
-            self.ckbx_mecan_15
+            self.ckbx_mecan_15,
+            self.ckbx_mecan_16
             ]
         
         riscosMecanicos = ""
@@ -533,7 +554,7 @@ class genOrdenServico:
             'NOMEFUNCIONARIO': self.entr_funcionario.get(),
             'CPFFUNCIONARIO': self.entr_CPF.get(),
             'FUNCFUNCIONARIO': self.cbbx_funcao.get(),
-            'ATVFUNCIONARIO': self.atividade_funcao(),
+            'ATVFUNCIONARIO': self.atividade_funcao() or '',
             'DIAOS': datetime.today().strftime("%d"),
             'MESOS': datetime.today().strftime("%B"),
             'ANOOS': datetime.today().strftime("%Y")            
@@ -550,11 +571,28 @@ class genOrdenServico:
             documentoModelo = 'osst_ghe03.docx'
         elif tipoGHE == "04":
             documentoModelo = 'osst_ghe04.docx'
+        elif tipoGHE == "05":
+            documentoModelo = 'osst_ghe05.docx'
         else:
             print("Outros")
 
-        # Abra o documento existente
-        doc = Document(os.path.join(caminho_base,'osst_mod', documentoModelo))
+        # Caminho do modelo e verificação
+        modelo_path = os.path.join(caminho_base,'osst_mod', documentoModelo)
+        if not os.path.exists(modelo_path):
+            messagebox.showerror("Erro", f"Modelo não encontrado:\n{modelo_path}")
+            return
+
+        # Abra o documento existente com tratamento de erro
+        try:
+            doc = Document(modelo_path)
+        except Exception as e:
+            messagebox.showerror("Erro", f"Falha ao abrir o modelo:\n{e}")
+            return
+
+        # Verifica se o documento tem tabelas esperadas antes de acessar índices
+        if len(doc.tables) < 5:
+            messagebox.showerror("Erro", "Modelo inválido: número insuficiente de tabelas no documento.")
+            return
 
         # Substitua as palavras específicas nos parágrafos
         for paragraph in doc.paragraphs:
@@ -566,7 +604,8 @@ class genOrdenServico:
                 for cell in row.cells:
                     cell = self.substituir_texto_tabela(cell, substituicoes)
 
-        arq_osst = os.path.join(caminho_base, 'osst_mod', 'osst_temp.docx')
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        arq_osst = os.path.join(tempfile.gettempdir(), f'osst_temp_{self.entr_apelido.get()}_{timestamp}.docx')
         arq_pdf_osst = os.path.join(self.dir_pasta_selecionada, f'OSST_{self.entr_apelido.get()}_{data_hoje}.pdf')
 
         # Acessar a primeira tabela (índice 0)
@@ -592,6 +631,11 @@ class genOrdenServico:
         doc.SaveAs(os.path.abspath(arq_pdf_osst), FileFormat=17)
         doc.Close()
         word.Quit()
+        # Remover arquivo temporário se possível
+        try:
+            os.remove(arq_osst)
+        except Exception:
+            pass
 
     def verificar_checkbuttons(self):
         cpf_digitado = self.entr_CPF.get()
