@@ -155,6 +155,7 @@ class genOrdenServico:
         self.var_ckbx_ergo_3 = tk.BooleanVar(value=False)
         self.var_ckbx_ergo_4 = tk.BooleanVar(value=False)
         self.var_ckbx_ergo_5 = tk.BooleanVar(value=False)
+        self.var_ckbx_ergo_6 = tk.BooleanVar(value=False)
 
         # Opcoes para garantir que fique visível
         self.ckbx_ergo_1 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Esforço físico intenso", variable=self.var_ckbx_ergo_1)
@@ -165,8 +166,10 @@ class genOrdenServico:
         self.ckbx_ergo_3.grid(row=0, column=2, sticky=tk.W, padx=5, pady=5)
         self.ckbx_ergo_4 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Frequente ação de puxar/empurrar cargas ou volumes ", variable=self.var_ckbx_ergo_4)
         self.ckbx_ergo_4.grid(row=0, column=3, sticky=tk.W, padx=5, pady=5)        
-        self.ckbx_ergo_5 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Não se Aplica", variable=self.var_ckbx_ergo_5)
-        self.ckbx_ergo_5.grid(row=0, column=4, sticky=tk.W, padx=5, pady=5)        
+        self.ckbx_ergo_5 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Levantamento e transporte manual de cargas ou volumes ", variable=self.var_ckbx_ergo_5)
+        self.ckbx_ergo_5.grid(row=1, column=0, sticky=tk.W, padx=5, pady=5)        
+        self.ckbx_ergo_6 = ttk.Checkbutton(lblframe_riscos_ergonomicos, text=" • Não se Aplica", variable=self.var_ckbx_ergo_6)
+        self.ckbx_ergo_6.grid(row=1, column=1, sticky=tk.W, padx=5, pady=5)        
 
 
         #LabelFrame dentro do Frame - Riscos Mecânicos
@@ -189,6 +192,7 @@ class genOrdenServico:
         self.var_ckbx_mecan_13 = tk.BooleanVar(value=False)
         self.var_ckbx_mecan_14 = tk.BooleanVar(value=False)
         self.var_ckbx_mecan_15 = tk.BooleanVar(value=False)
+        self.var_ckbx_mecan_16 = tk.BooleanVar(value=False)
 
         # Opcoes para garantir que fique visível
         self.ckbx_mecan_1 = ttk.Checkbutton(lblframe_riscos_mecanicos, text=" • Animais peçonhentos", variable=self.var_ckbx_mecan_1 )
@@ -222,8 +226,10 @@ class genOrdenServico:
         self.ckbx_mecan_13.grid(row=3, column=0, sticky=tk.W, padx=5, pady=5)
         self.ckbx_mecan_14 = ttk.Checkbutton(lblframe_riscos_mecanicos, text=" • Trânsito de veículos pesados", variable=self.var_ckbx_mecan_14)
         self.ckbx_mecan_14.grid(row=3, column=1, sticky=tk.W, padx=5, pady=5)
-        self.ckbx_mecan_15 = ttk.Checkbutton(lblframe_riscos_mecanicos, text=" • Não se Aplica", variable=self.var_ckbx_mecan_15)
+        self.ckbx_mecan_15 = ttk.Checkbutton(lblframe_riscos_mecanicos, text=" • Diferença de nível menor ou igual a dois metros", variable=self.var_ckbx_mecan_15)
         self.ckbx_mecan_15.grid(row=3, column=2, sticky=tk.W, padx=5, pady=5)
+        self.ckbx_mecan_16 = ttk.Checkbutton(lblframe_riscos_mecanicos, text=" • Não se Aplica", variable=self.var_ckbx_mecan_16)
+        self.ckbx_mecan_16.grid(row=3, column=3, sticky=tk.W, padx=5, pady=5)
 
         #LabelFrame dentro do Frame - Opções
         lblframe_opcoes = ttk.LabelFrame(frame, text="Opções: ", padding=10)
@@ -388,6 +394,7 @@ class genOrdenServico:
                 ]     
         elif gheSelecionado == "05":
                 self.cbbx_funcao['values'] = [
+                    "ALMOXARIFE",
                     "ALMOXARIFE JR",
                     "ALMOXARIFE PL",
                     "ALMOXARIFE SR",
@@ -480,7 +487,8 @@ class genOrdenServico:
             self.var_ckbx_ergo_2, 
             self.var_ckbx_ergo_3, 
             self.var_ckbx_ergo_4,
-            self.var_ckbx_ergo_5
+            self.var_ckbx_ergo_5,
+            self.var_ckbx_ergo_6
             ]
         
         checkboxErgonomicos = [
@@ -488,7 +496,8 @@ class genOrdenServico:
             self.ckbx_ergo_2, 
             self.ckbx_ergo_3, 
             self.ckbx_ergo_4,
-            self.ckbx_ergo_5
+            self.ckbx_ergo_5,
+            self.ckbx_ergo_6
             ]
         
         riscosErgonomicos = ""
@@ -512,7 +521,8 @@ class genOrdenServico:
             self.var_ckbx_mecan_12, 
             self.var_ckbx_mecan_13, 
             self.var_ckbx_mecan_14, 
-            self.var_ckbx_mecan_15
+            self.var_ckbx_mecan_15,
+            self.var_ckbx_mecan_16
             ]
         
         checkboxMecanicos = [
@@ -530,7 +540,8 @@ class genOrdenServico:
             self.ckbx_mecan_12, 
             self.ckbx_mecan_13, 
             self.ckbx_mecan_14, 
-            self.ckbx_mecan_15
+            self.ckbx_mecan_15,
+            self.ckbx_mecan_16
             ]
         
         riscosMecanicos = ""
