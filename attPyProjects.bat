@@ -7,7 +7,7 @@ set DESTINO=C:\PyProjects
 set TEMP=%TEMP%\repo_temp
 
 :: URL do repositório remoto
-set REPO=https://github.com/renannunesz/PyProjects.git
+set REPO=https://github.com/Samir-SAPSD/DocsGenOS.git
 
 :: Apaga pasta temporária se já existir
 rmdir /s /q "%TEMP%"
